@@ -35,18 +35,34 @@ function switcher(exp)
       console.log("exp");
   }
 }
+function addAnimation(inp2)
+{
+  var activeButton=document.querySelector("."+inp2);
+  // the html element to which we going to add class on
+
+  activeButton.classList.add("pressed");
+  
+  setTimeout(function()
+  {
+    activeButton.classList.remove("pressed");
+  },100);
+
+}
+//mouse click clicked
 for (var i = 0; i < document.querySelectorAll(".drum").length; i++) {
   document.querySelectorAll("button")[i].addEventListener("click", function() {
 
     // this.style.color="white";
     var inp = this.innerHTML;
     switcher(inp);
+    addAnimation(inp);
   });
 }
 // keyboard key pressed
 document.addEventListener('keypress',function(event)
 {
   switcher(event.key);
+  addAnimation(event.key);
 });
 
 // var aud=new Audio("sounds/tom-1.mp3");//storing the audio file onto the object
